@@ -11,22 +11,13 @@
 </head>
 
 <body>
-    <div id="app">
-        <p>Using mustaches:{{rawHtml}}</p>
-        <p>Using v-html directive:
-            <span v-html="rawHtml"></span>
-        </p>
-        <button v-bind:disabled="isButtonDisabled">Button</button>
-        <p>{{number +1}}</p>
-        <p>{{ok?"YES":"NO"}}</p>
-        <p>{{message.split("").reverse().join("")}}</p>
-        <div v-bind:id="'list-'+id"></div>
-
-        <a v-bind:href="url">baidu</a>
-        <a v-on:click="doSomething">123</a>
-        <form v-on:submit.prevent="onSubmit">...</form>
-        <a :href="url">baidu</a>
-        <a @click="doSomething">123</a>
+    <div id="example">
+        <p>Original message:"{{message}}"</p>
+        <p>Computed reversed message:"{{reversedMessage}}"</p>
+        <p>{{now}}"</p>
+    </div>
+    <div id="demo">
+        {{fullName}}
     </div>
     <script src="./js/index.js"></script>
 </body>

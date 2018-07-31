@@ -1,17 +1,51 @@
 var vm = new Vue({
-  el: "#app",
+  el: "#example",
   data: {
-    rawHtml: "<span style='color:red'>This should be red.</span>",
-    isButtonDisabled: false, //null undefined false | true
-    number: 5,
-    ok: false,
-    message: "Hello Vue！",
-    id: 5,
-    url: "http://www.baidu.com"
+    message: "Hello"
   },
-  methods: {
-    doSomething: function() {
-      this.number += 1;
+  computed: {
+    reversedMessage: function() {
+      return this.message
+        .split("")
+        .reverse()
+        .join("");
+    },
+    now: function() {
+      return Date.now();
+    }
+  }
+});
+
+var vm2 = new Vue({
+  el: "#demo",
+  data: {
+    firstName: "Foo",
+    lastName: "Bar",
+    // fullName: "Foo Bar"
+  },
+  //   watch: {
+  //     firstName: function(val) {
+  //       this.fullName = val + "" + this.firstName;
+  //     },
+  //     lastName: function(val) {
+  //       this.fullName = this.firstName + "" + val;
+  //     }
+  //   },
+  //   computed: {
+  //     fullName: function() {
+  //       return this.firstName + " " + this.lastName;
+  //     }
+  //   }
+  computed: {
+    fullName: {
+      get: function() {
+          return this.firstName + ' ' + this.lastName
+      },
+      set: function(newValue) {
+          var names = newValue.split(' ')
+          this.firstName = names[0]
+          this.lastName = names[names.length-1]
+      }
     }
   }
 });
