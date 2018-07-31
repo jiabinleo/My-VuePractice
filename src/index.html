@@ -21,6 +21,9 @@
         <p>{{ok?"YES":"NO"}}</p>
         <p>{{message.split("").reverse().join("")}}</p>
         <div v-bind:id="'list-'+id"></div>
+
+        <a v-bind:href="url">baidu</a>
+        <a v-on:click="doSomething">123</a>
     </div>
     <script src="./js/index.js"></script>
 </body>
