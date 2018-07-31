@@ -1,0 +1,19 @@
+{
+  "name": "my-vuepractice",
+  "version": "1.0.0",
+  "description": "\"# My-VuePractice\"",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jiabinleo/My-VuePractice.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/jiabinleo/My-VuePractice/issues"
+  },
+  "homepage": "https://github.com/jiabinleo/My-VuePractice#readme"
+}
