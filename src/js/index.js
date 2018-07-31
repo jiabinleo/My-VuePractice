@@ -1,6 +1,6 @@
 var vm = new Vue({
     el:"#app",
     data:{
-        msg:"first msg"
+        rawHtml:"<span style='color:red'>This should be red.</span>"
     }
 })

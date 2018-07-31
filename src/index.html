@@ -12,8 +12,8 @@
 
 <body>
     <div id="app">
-        <p v-once>Message:{{msg}}</p>
-        <input type="text" v-model="msg">
+        <p>Using mustaches:{{rawHtml}}</p>
+        <p>Using v-html directive:<span v-html="rawHtml"></span></p>
     </div>
     <script src="./js/index.js"></script>
 </body>
