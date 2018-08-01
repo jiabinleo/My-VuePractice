@@ -1,51 +1,31 @@
-var vm = new Vue({
-  el: "#example",
+var watchExample = new Vue({
+  el: "#watch-example",
   data: {
-    message: "Hello"
+    question: "",
+    answer: "I cannot give you an answer until you ask a question!"
   },
-  computed: {
-    reversedMessage: function() {
-      return this.message
-        .split("")
-        .reverse()
-        .join("");
-    },
-    now: function() {
-      return Date.now();
+  watch: {
+    question: function(newQuestion, oldQuestion) {
+      this.answer = "Waiting for you to stop typing...";
+      this.debouncedGetAnswer();
     }
-  }
-});
-
-var vm2 = new Vue({
-  el: "#demo",
-  data: {
-    firstName: "Foo",
-    lastName: "Bar",
-    // fullName: "Foo Bar"
   },
-  //   watch: {
-  //     firstName: function(val) {
-  //       this.fullName = val + "" + this.firstName;
-  //     },
-  //     lastName: function(val) {
-  //       this.fullName = this.firstName + "" + val;
-  //     }
-  //   },
-  //   computed: {
-  //     fullName: function() {
-  //       return this.firstName + " " + this.lastName;
-  //     }
-  //   }
-  computed: {
-    fullName: {
-      get: function() {
-          return this.firstName + ' ' + this.lastName
-      },
-      set: function(newValue) {
-          var names = newValue.split(' ')
-          this.firstName = names[0]
-          this.lastName = names[names.length-1]
+  created: function() {
+    this.debouncedGetAnswer = _.debounce(this.getAnswer, 500);
+  },
+  methods: {
+    getAnswer: function() {
+      if (this.question.indexOf("?") === -1) {
+        this.answer = "Questions usually contain a question mark. ;-)";
+        return;
       }
+      this.answer = "Thinking...";
+      var vm = this;
+      axios.get("https://yesno.wtf/api").then(function(response) {
+        vm.answer = _.capitalize(response.data.answer);
+
+        vm.answer = "Error! Could not reach the API. " + error;
+      });
     }
   }
 });
